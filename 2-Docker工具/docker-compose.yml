@@ -1,0 +1,9 @@
+version: "3"
+
+services:
+  web:
+    build: .
+    image: http_server:latest
+    container_name: http_server
+    ports:
+      - "8888:8888"
