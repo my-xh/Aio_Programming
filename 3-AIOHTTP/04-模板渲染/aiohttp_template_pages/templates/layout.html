@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <script src="/node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-light bg-light" style="justify-content: start">
+    <!-- 配置顶部菜单 -->
+    <a href="/" class="navbar-brand">小云站</a>
+    <ul class="nav nav-pills">
+        <li class="nav nav-item">
+            <a href="/" class="nav-link {% if request.path == '/' %}active{% endif %}">首页</a>
+        </li>
+        <li class="nav nav-item">
+            <a href="/news" class="nav-link {% if request.path == '/news' %}active{% endif %}">动态</a>
+        </li>
+        <li class="nav nav-item">
+            <a href="/blog" class="nav-link {% if request.path == '/blog' %}active{% endif %}">博客</a>
+        </li>
+    </ul>
+</nav>
+<div class="container-fluid">
+    {% block body %}
+    {% endblock %}
+</div>
+
+</body>
+</html>

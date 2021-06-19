@@ -1,0 +1,20 @@
+version: "3"
+
+services:
+  web:
+    build: .
+    image: http_server:latest
+    container_name: http_server
+    ports:
+      - "8080:8080"
+    restart: always
+    volumes:
+      - ".:/opt/"
+      - "../../../:/opt/module/"
+    working_dir: "/opt/"
+    command:
+      - sh
+      - -c
+      - |
+        cp /opt/module/aiofile.py /opt/aiofile.py
+        python server.py

@@ -1,0 +1,50 @@
+version: "3"
+
+services:
+  config_route_one_by_one:
+    build: .
+    ports:
+      - "8080:8080"
+    image: "http_server:latest"
+    container_name: "config_route_one_by_one"
+    restart: always
+    volumes:
+      - ".:/opt/"
+    working_dir: "/opt/"
+    command: python ./01-config_route_one_by_one.py
+
+  config_routes:
+    build: .
+    ports:
+      - "8081:8080"
+    image: "http_server:latest"
+    container_name: "config_routes"
+    restart: always
+    volumes:
+      - ".:/opt/"
+    working_dir: "/opt/"
+    command: python ./02-config_routes.py
+
+  config_route_with_decorator:
+    build: .
+    ports:
+      - "8082:8080"
+    image: "http_server:latest"
+    container_name: "config_route_with_decorator"
+    restart: always
+    volumes:
+      - ".:/opt/"
+    working_dir: "/opt/"
+    command: python ./03-config_route_with_decorator.py
+
+  pages:
+    build: .
+    ports:
+      - "8083:8080"
+    image: "http_server:latest"
+    container_name: "pages"
+    restart: always
+    volumes:
+      - ".:/opt/"
+    working_dir: "/opt/"
+    command: python ./04-pages.py

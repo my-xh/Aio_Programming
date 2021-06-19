@@ -1,0 +1,18 @@
+version: "3"
+
+services:
+  web:
+    build: .
+    image: http_server:latest
+    container_name: http_server
+    ports:
+      - "8080:8080"
+    # 设置容器意外停止后自动重启
+    restart: always
+    # 配置路径映射，将当前目录映射到容器中的/opt目录
+    volumes:
+      - ".:/opt/"
+    # 指定容器中应用程序的工作目录为/opt
+    working_dir: "/opt/"
+    # 配置容器启动时执行的命令
+    command: python 01-server.py
