@@ -49,6 +49,10 @@ class AIOWrapper:
             )
         )
 
+    def __await__(self):
+        self._blocked_file_io = yield from self._coroutine
+        return self
+
 
 # 异步方式打开文件
 def async_open(*args) -> AIOWrapper:
@@ -59,4 +63,3 @@ def async_open(*args) -> AIOWrapper:
             *args,
         )
     )
-
