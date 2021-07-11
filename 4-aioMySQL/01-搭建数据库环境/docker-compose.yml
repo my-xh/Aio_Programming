@@ -1,0 +1,25 @@
+version: "3"
+
+services:
+  # 数据库服务
+  db:
+    image: mysql
+    container_name: db
+    restart: always
+    environment:
+      # 配置数据库的用户名root, 用户密码为pwd
+      MYSQL_ROOT_PASSWORD: pwd
+    volumes:
+      # 映射数据存储目录
+      - "./mysql_data:/var/lib/mysql"
+    ports:
+      # 配置端口映射
+      - 8306:3306
+
+  # 数据库管理服务
+  adminer:
+    image: adminer
+    container_name: adminer
+    restart: always
+    ports:
+      - 8080:8080
