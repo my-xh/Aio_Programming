@@ -1,0 +1,15 @@
+version: "3"
+
+services:
+  asgi:
+    build: .
+    image: daphne_server
+    container_name: daphne_server
+    ports:
+      - "443:443"
+    restart: always
+    tty: true
+    volumes:
+      - ".:/opt/"
+    working_dir: /opt/
+    command: daphne --bind 0.0.0.0 -e ssl:443:privateKey=./ssl/cert.key:certKey=./ssl/cert.pem asgi:app

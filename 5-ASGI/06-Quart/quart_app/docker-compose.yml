@@ -1,0 +1,15 @@
+version: "3"
+
+services:
+  quart:
+    build: .
+    image: quart_server
+    container_name: quart_server
+    ports:
+      - "5000:5000"
+    volumes:
+      - ".:/opt/"
+    working_dir: /opt/
+    restart: always
+    tty: true
+    command: hypercorn --bind 0.0.0.0:5000 asgi:app

@@ -1,0 +1,15 @@
+version: "3"
+
+services:
+  starlette:
+    build: .
+    image: starlette_server
+    container_name: starlette_server
+    ports:
+      - "8000:8000"
+    volumes:
+      - ".:/opt/"
+    working_dir: /opt/
+    restart: always
+    tty: true
+    command: uvicorn --host 0.0.0.0 asgi:app

@@ -1,0 +1,15 @@
+version: "3"
+
+services:
+  asgi:
+    build: .
+    image: asgi_server
+    container_name: asgi_server
+    ports:
+      - "443:8000"
+    restart: always
+    tty: true
+    volumes:
+      - ".:/opt/"
+    working_dir: /opt/
+    command: uvicorn --host 0.0.0.0 --ssl-certfile ./ssl/cert.pem --ssl-keyfile ./ssl/cert.key asgi:app
