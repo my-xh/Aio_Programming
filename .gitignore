@@ -221,3 +221,5 @@ typings/
 
 # Cert files
 ssl/
+mysql_data/
+db_data/
