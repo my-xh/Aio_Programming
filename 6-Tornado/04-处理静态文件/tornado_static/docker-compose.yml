@@ -1,0 +1,20 @@
+version: "3"
+
+services:
+  gateway:
+    build: ./runtime/gateway
+    image: gateway
+    container_name: gateway
+    volumes:
+      - "./static:/usr/local/apache2/htdocs/static"
+    ports:
+      - 80:80
+
+  web:
+    build: ./runtime/web
+    image: web
+    container_name: web
+    volumes:
+      - ".:/opt/web"
+    working_dir: /opt/web
+    command: python static_server.py
