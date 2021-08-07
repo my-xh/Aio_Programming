@@ -25,6 +25,6 @@ if __name__ == '__main__':
     # 配置静态文件目录
     app.router.add_static(
         '/static',
-        os.path.join(os.path.dirname(__file__), 'templates')
+        os.path.join(os.path.dirname(__file__), 'static')
     )
     web.run_app(app)
