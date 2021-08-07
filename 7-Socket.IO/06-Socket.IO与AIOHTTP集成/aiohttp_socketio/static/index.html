@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/socket.io.js"></script>
+</head>
+<body>
+<div id="output"></div>
+<script>
+    (function () {
+        let socket = io();
+        let output = document.querySelector('#output');
+        socket.on('echo', e => {
+            output.innerHTML += `${e}<br>`;
+        });
+    })();
+</script>
+</body>
+</html>
